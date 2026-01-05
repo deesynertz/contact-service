@@ -1,0 +1,39 @@
+{
+    "name": "deesynertz/contact-service",
+    "description": "Internal Deesynertz contact form mail service (DB-free)",
+    "type": "library",
+    "license": "MIT",
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "autoload": {
+        "psr-4": {
+            "Deesynertz\\ContactService\\": "src/",
+            "Deesynertz\\ContactService\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "deesynertz",
+            "email": "deesynertz@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Deesynertz\\ContactService\\ContactServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "php": "^7.4|^8.0|^8.1|^8.2|^8.3",
+        "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+        "illuminate/mail": "^8.0|^9.0|^10.0|^11.0",
+        "illuminate/routing": "^8.0|^9.0|^10.0|^11.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
