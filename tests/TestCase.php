@@ -22,8 +22,9 @@ abstract class TestCase extends OrchestraTestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('mail.default', 'array');
-        $app['config']->set('deesynertz-contact.to', 'test@example.com');
-        $app['config']->set('deesynertz-contact.route', '/contact/send');
+        // Set default .env config for testing
+        $app['config']->set('deesynertz-contact.from.address', 'booktour@test.com');
+        $app['config']->set('deesynertz-contact.from.name', 'Test Sender');
+        $app['config']->set('deesynertz-contact.to', 'management@test.com');
     }
 }

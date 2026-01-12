@@ -26,7 +26,10 @@
         "laravel": {
             "providers": [
                 "Deesynertz\\ContactService\\ContactServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "ContactService": "Deesynertz\\ContactService\\Facades\\ContactService"
+            }
         }
     },
     "require": {

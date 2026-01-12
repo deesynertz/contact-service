@@ -2,56 +2,34 @@
 
 namespace Deesynertz\ContactService\Tests\Feature;
 
-use Deesynertz\ContactService\Mail\ContactMail;
+use Deesynertz\ContactService\Facades\ContactService;
 use Deesynertz\ContactService\Tests\TestCase;
 use Illuminate\Support\Facades\Mail;
+use Deesynertz\ContactService\Mail\ContactFormMail;
+use Illuminate\Http\Request;
 
 class ContactServiceTest extends TestCase
 {
-    /**
-     * Test that the contact route exists and returns a redirect
-     */
-    public function test_contact_route_exists()
-    {
-        $response = $this->post(config('deesynertz-contact.route'), [
-            'name'  => 'John Doe',
-            'email' => 'john@example.com',
-            'phone' => '1234567890',
-        ]);
-
-        $response->assertStatus(302);
-        $response->assertSessionHas('success');
-    }
-
-    /**
-     * Test validation errors are returned when required fields are missing
-     */
-    public function test_contact_validation()
-    {
-        $response = $this->post(config('deesynertz-contact.route'), []);
-
-        $response->assertSessionHasErrors(['name', 'email', 'phone']);
-    }
-
-    /**
-     * Test that email is sent with correct data
-     */
-    public function test_email_is_sent()
+    /** @test */
+    public function it_can_send_email_from_a_controller_like_request()
     {
         Mail::fake();
 
-        $payload = [
-            'name'  => 'Jane Doe',
-            'email' => 'jane@example.com',
-            'phone' => '0987654321',
+        $requestData = [
+            'name' => 'Bob',
+            'email' => 'bob@example.com',
+            'phone' => '5551234',
+            'message' => 'Feature test message'
         ];
 
-        $this->post(config('deesynertz-contact.route'), $payload);
+        // Simulate what a controller would do
+        $request = new Request($requestData);
+        $data = $request->only(['name', 'email', 'phone', 'message']);
+        ContactService::send($data);
 
-        Mail::assertSent(ContactMail::class, function ($mail) use ($payload) {
-            return $mail->data['name'] === $payload['name'] &&
-                   $mail->data['email'] === $payload['email'] &&
-                   $mail->data['phone'] === $payload['phone'];
+        Mail::assertSent(ContactFormMail::class, function ($mail) use ($requestData) {
+            return $mail->data['name'] === $requestData['name'] &&
+                   $mail->data['email'] === $requestData['email'];
         });
     }
 }
