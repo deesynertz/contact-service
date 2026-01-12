@@ -3,7 +3,7 @@
 namespace Deesynertz\ContactService;
 
 use Illuminate\Support\ServiceProvider;
-use Deesynertz\ContactService\ContactService;
+use Deesynertz\ContactService\Facades\ContactService;
 
 class ContactServiceProvider extends ServiceProvider
 {

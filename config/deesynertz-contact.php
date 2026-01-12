@@ -1,30 +1,14 @@
 <?php
 
 return [
-    /*|--------------------------------------------------------------------------
-    | Contact Form Recipient Email
-    |--------------------------------------------------------------------------
-    */
-
-    'to' => env('CONTACT_TO_EMAIL', 'info@deesynertz.com'),
-    'subject' => 'New Contact Form Submission',
-
-    /*|--------------------------------------------------------------------------
-    | Contact Form Route
-    |--------------------------------------------------------------------------
-    */
-    'route' => '/contact/send',
-];
-
-return [
     /*
     |--------------------------------------------------------------------------
     | System Sender Email
     |--------------------------------------------------------------------------
     */
     'from' => [
-        'address' => env('CONTACT_MAIL_FROM', 'sender@example.com'),
-        'name'    => env('CONTACT_MAIL_FROM_NAME', 'Website Contact'),
+        'address' => env('DEESYNERTZ_CONTACT_MAIL_FROM', 'sender@example.com'),
+        'name'    => env('DEESYNERTZ_CONTACT_MAIL_FROM_NAME', 'Website Contact'),
     ],
 
     /*
@@ -32,7 +16,7 @@ return [
     | Management Receiver Email
     |--------------------------------------------------------------------------
     */
-    'to' => env('CONTACT_MAIL_TO', 'receiver@example.com'),
+    'to' => env('DEESYNERTZ_CONTACT_MAIL_TO', 'receiver@example.com'),
 
     /*|--------------------------------------------------------------------------
     | Contact Form Route
