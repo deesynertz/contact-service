@@ -7,8 +7,8 @@ return [
     |--------------------------------------------------------------------------
     */
     'from' => [
-        'address' => env('DEESYNERTZ_CONTACT_MAIL_FROM', 'sender@example.com'),
-        'name'    => env('DEESYNERTZ_CONTACT_MAIL_FROM_NAME', 'Website Contact'),
+        'address' => env('MAIL_FROM_ADDRESS', 'sender@example.com'),
+        'name'    => env('MAIL_FROM_NAME', 'Website Contact'),
     ],
 
     /*
@@ -16,7 +16,7 @@ return [
     | Management Receiver Email
     |--------------------------------------------------------------------------
     */
-    'to' => env('DEESYNERTZ_CONTACT_MAIL_TO', 'receiver@example.com'),
+    'to' => env('MAIL_TO_ADDRESS', 'receiver@example.com'),
 
     /*|--------------------------------------------------------------------------
     | Contact Form Route

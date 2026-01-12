@@ -30,13 +30,13 @@ class ContactService
     {
         if (!config('deesynertz-contact.from.address')) {
             throw new RuntimeException(
-                'DEESYNERTZ_CONTACT_MAIL_FROM is not set in your .env'
+                'MAIL_FROM_ADDRESS is not set in your .env'
             );
         }
 
         if (!config('deesynertz-contact.to')) {
             throw new RuntimeException(
-                'DEESYNERTZ_CONTACT_MAIL_TO is not set in your .env'
+                'MAIL_TO_ADDRESS is not set in your .env'
             );
         }
     }
